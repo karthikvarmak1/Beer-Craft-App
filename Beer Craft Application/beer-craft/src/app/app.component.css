@@ -1,0 +1,22 @@
+
+.text-style {
+    font-size: 16px;
+}
+
+.nav-bar {
+    text-align: center;
+    font-size: 30px;
+    color: aliceblue;
+    background-color: black;
+}
+
+.text-search {
+    border: 2px solid;
+    border-radius: 5px;
+    height: 25px;
+    width: 50%;
+}
+
+.text-color {
+    color: white;
+}

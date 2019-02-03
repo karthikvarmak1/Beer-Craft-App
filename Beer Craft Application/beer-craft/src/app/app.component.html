@@ -1,0 +1,43 @@
+<div class="ui-g ui-fluid">
+  <div class="nav-bar ui-g-12">
+    Beer Craft Application
+  </div>
+  <div class="ui-g-12 padledt40 padtop10">
+    <input type="text" name="search" [(ngModel)]='searchBeer' class="text-search pad5" placeholder="  &#xF002; Search by Beer"
+      style="font-family:Arial, FontAwesome">
+  </div>
+  <div class="ui-g-12" *ngIf="beerModel.beers && beerModel.beers.length > 0">
+    <div class="ui-g-9 left pad20">
+      <p-table [columns]="beerModel.columnHeaders" [value]="(beerModel.beers | beersFilter : searchBeer)" [paginator]="true"
+        [rows]="5" [totalRecords]="beerModel.totalRecords" [rowsPerPageOptions]="[5, 10, 50]" [sortMode]="single"
+        (sortFunction)="sortColumn($event)">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns">
+              {{col.header}}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-beer let-columns="columns">
+          <tr>
+            <td *ngFor="let col of columns">
+              <div *ngIf="!(col.field === 'button')">{{beer[col.field]}}</div>
+              <div *ngIf="(col.field === 'button')"><button pButton type="button" 
+                class="ui-button-primary" (click)="addToCart(beer)">Add to cart</button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="ui-g-3 right pad20" *ngIf="beerModel.cartItems.length > 0">
+      <div class="ui-g-12 border-style">
+        <h2>Cart</h2>
+        <hr>
+        <div class="ui-g-12" *ngFor="let item of beerModel.cartItems">
+          <span class="text-style">{{item.name}} &nbsp;&nbsp; * {{item.quantity}}  </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

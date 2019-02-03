@@ -1,0 +1,10 @@
+{
+    "/beercraft": {
+      "target": "http://starlord.hackerearth.com/beercraft",
+      "secure": true,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/beercraft": ""
+    }
+    }
+  }
